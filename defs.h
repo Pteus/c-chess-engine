@@ -17,6 +17,7 @@ enum {
   FILE_E,
   FILE_F,
   FILE_G,
+  FILE_H,
   FILE_NONE
 }; // columns
 enum {
@@ -138,5 +139,18 @@ typedef struct {
   S_UNDO history[MAX_GAME_MOVES];
 
 } S_BOARD;
+
+/* MACROS */
+// return the equivalent square of the file and rank. 120 sqr grid
+// A1 = (21 + 0) * (0 * 10) = 21
+// A2 = (21 + 0) * (1 * 10) = 31
+#define FR2SQ(f, r) ((21 + (f)) + ((r) * 10))
+
+/* GLOBALS */
+extern int Sqr120ToSqr64[120];
+extern int Sqr64ToSqr120[64];
+
+/* FUNCTIONS*/
+extern void AllInit();
 
 #endif
