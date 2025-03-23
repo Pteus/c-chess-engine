@@ -164,16 +164,21 @@ typedef struct {
 } S_BOARD;
 
 /* MACROS */
-// return the equivalent square of the file and rank. 120 sqr grid
+// return the equivalent square of the file and rank. 120 based index
 // A1 = (21 + 0) * (0 * 10) = 21
 // A2 = (21 + 0) * (1 * 10) = 31
 #define FR2SQ(f, r) ((21 + (f)) + ((r) * 10))
+#define SQ64(sq120) Sqr120ToSqr64[sq120]
 
 /* GLOBALS */
 extern int Sqr120ToSqr64[120];
 extern int Sqr64ToSqr120[64];
 
 /* FUNCTIONS*/
+// init.c
 extern void AllInit();
+
+// bitboards.c
+extern void PrintBitBoard(U64 bb);
 
 #endif
