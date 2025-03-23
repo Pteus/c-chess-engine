@@ -171,10 +171,14 @@ typedef struct {
 #define SQ64(sq120) Sqr120ToSqr64[sq120]
 #define POP(b) PopBit(b)
 #define CNT(b) CountBits(b)
+#define CLRBIT(bb, sq) ((bb) &= ClearMask[(sq)])
+#define SETBIT(bb, sq) ((bb) |= SetMask[(sq)])
 
 /* GLOBALS */
 extern int Sqr120ToSqr64[120];
 extern int Sqr64ToSqr120[64];
+extern U64 SetMask[64];
+extern U64 ClearMask[64];
 
 /* FUNCTIONS*/
 // init.c

@@ -6,22 +6,18 @@ int main() {
   AllInit();
   U64 playBitBoard = 0ULL;
 
-  playBitBoard |= (1ULL << SQ64(D2));
-  playBitBoard |= (1ULL << SQ64(D3));
-  playBitBoard |= (1ULL << SQ64(D4));
+  for (int index = 0; index < 64; index++) {
+    printf("index: %d", index);
+    PrintBitBoard(SetMask[index]);
+    printf("\n");
+  }
 
+  SETBIT(playBitBoard, 0);
   PrintBitBoard(playBitBoard);
-
-  int count = CNT(playBitBoard);
-
-  printf("Count: %d\n", count);
-
-  int index = POP(&playBitBoard);
-  printf("pop index: %d\n", index);
+  SETBIT(playBitBoard, 1);
   PrintBitBoard(playBitBoard);
-  count = CNT(playBitBoard);
-
-  printf("Count: %d\n", count);
+  CLRBIT(playBitBoard, 1);
+  PrintBitBoard(playBitBoard);
 
   return EXIT_SUCCESS;
 }
