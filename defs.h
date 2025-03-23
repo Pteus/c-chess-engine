@@ -5,8 +5,10 @@ typedef unsigned long long U64; // unsigned 64bit integer
 
 #define NAME "engine 1.0"
 #define BRD_SRQ_NUM 120 // 120 squares on the board
+#define MAX_GAME_MOVES 2048
 
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
+
 enum {
   FILE_A,
   FILE_B,
@@ -16,7 +18,7 @@ enum {
   FILE_F,
   FILE_G,
   FILE_NONE
-}; // lines
+}; // columns
 enum {
   RANK_1,
   RANK_2,
@@ -27,7 +29,7 @@ enum {
   RANK_7,
   RANK_8,
   RANK_NONE
-}; // columns
+}; // lines
 
 enum { WHITE, BLACK, BOTH };
 
@@ -101,6 +103,16 @@ enum {
 
 enum { FALSE, TRUE };
 
+enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 }; // castling
+
+typedef struct {
+  int move;
+  int castlePerm;
+  int enPas;
+  int fiftyMove;
+  U64 posKey;
+} S_UNDO;
+
 typedef struct {
   int pieces[BRD_SRQ_NUM];
   U64 pawns[3];
@@ -114,12 +126,16 @@ typedef struct {
   int ply;
   int hisPly;
 
+  int castlePerm;
+
   U64 posKey;
 
   int pceNum[13];
   int bigPce[3]; // not pawns
   int majPce[3]; // rooks and queens
   int minPce[3]; // bishops and knights
+
+  S_UNDO history[MAX_GAME_MOVES];
 
 } S_BOARD;
 
