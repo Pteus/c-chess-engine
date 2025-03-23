@@ -1,6 +1,26 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include <stdlib.h>
+
+// comment this so that the assert logic is not ran
+#define DEBUG
+
+#ifndef DEBUG
+// if not debug, assert does nothing
+#define ASSERT(n)
+#else
+#define ASSERT(n)                                                              \
+  if (!(n)) {                                                                  \
+    printf("%s - Failed", #n);                                                 \
+    printf(" On %s", __DATE__);                                                \
+    printf(" At %s", __TIME__);                                                \
+    printf(" In File %s", __FILE__);                                           \
+    printf(" At Line %d\n", __LINE__);                                         \
+    exit(1);                                                                   \
+  }
+#endif
+
 typedef unsigned long long U64; // unsigned 64bit integer
 
 #define NAME "engine 1.0"
@@ -137,6 +157,9 @@ typedef struct {
   int minPce[3]; // bishops and knights
 
   S_UNDO history[MAX_GAME_MOVES];
+
+  // piece list
+  int pList[13][10];
 
 } S_BOARD;
 
