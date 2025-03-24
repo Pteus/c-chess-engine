@@ -27,6 +27,7 @@ typedef unsigned long long U64; // unsigned 64bit integer
 #define NAME "engine 1.0"
 #define BRD_SRQ_NUM 120 // 120 squares on the board
 #define MAX_GAME_MOVES 2048
+#define START_FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
 
