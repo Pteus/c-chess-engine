@@ -16,7 +16,7 @@ U64 GeneratePosKey(const S_BOARD *pos) {
   // it must be a piece (if and asserts)
   for (sq = 0; sq < BRD_SRQ_NUM; ++sq) {
     piece = pos->pieces[sq];
-    if (piece != NO_SQ && piece != EMPTY) {
+    if (piece != NO_SQ && piece != EMPTY && piece != OFFBOARD) {
       ASSERT(piece >= wP && piece <= bK);
       finalKey ^= PieceKeys[piece][sq];
     }
