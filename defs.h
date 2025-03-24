@@ -1,6 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include <stdio.h>
 #include <stdlib.h>
 
 // comment this so that the assert logic is not ran
@@ -179,6 +180,9 @@ extern int Sqr120ToSqr64[120];
 extern int Sqr64ToSqr120[64];
 extern U64 SetMask[64];
 extern U64 ClearMask[64];
+extern U64 PieceKeys[13][120];
+extern U64 SideKey;
+extern U64 CastleKeys[16];
 
 /* FUNCTIONS*/
 // init.c

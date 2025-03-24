@@ -1,9 +1,30 @@
 #include "defs.h"
 
+#define RAND_64                                                                \
+  ((U64)rand() | ((U64)rand() << 15) | ((U64)rand() << 30) |                   \
+   ((U64)rand() << 45) | ((U64)(rand() & 0xF) << 60))
+
 int Sqr120ToSqr64[120];
 int Sqr64ToSqr120[64];
 U64 SetMask[64];
 U64 ClearMask[64];
+
+U64 PieceKeys[13][120];
+U64 SideKey;
+U64 CastleKeys[16];
+
+void InitHashKeys() {
+  int index, index2 = 0;
+  for (index = 0; index < 13; ++index) {
+    for (index2 = 0; index2 < 120; ++index2) {
+      PieceKeys[index][index2] = RAND_64;
+    }
+  }
+  SideKey = RAND_64;
+  for (index = 0; index < 16; ++index) {
+    CastleKeys[index] = RAND_64;
+  }
+}
 
 void InitBitMask() {
   int index = 0;
@@ -45,4 +66,5 @@ void InitSq120To64() {
 void AllInit() {
   InitSq120To64();
   InitBitMask();
+  InitHashKeys();
 }
