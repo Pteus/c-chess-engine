@@ -4,20 +4,19 @@
 
 int main() {
   AllInit();
-  U64 playBitBoard = 0ULL;
 
-  for (int index = 0; index < 64; index++) {
-    printf("index: %d", index);
-    PrintBitBoard(SetMask[index]);
-    printf("\n");
-  }
+  int PieceOne = rand();
+  int PieceTwo = rand();
+  int PieceThree = rand();
+  int PieceFour = rand();
 
-  SETBIT(playBitBoard, 0);
-  PrintBitBoard(playBitBoard);
-  SETBIT(playBitBoard, 1);
-  PrintBitBoard(playBitBoard);
-  CLRBIT(playBitBoard, 1);
-  PrintBitBoard(playBitBoard);
+  printf("PieceOne:%X\n", PieceOne);
+  printf("PieceTwo:%X\n", PieceTwo);
+  printf("PieceThree:%X\n", PieceThree);
+  printf("PieceFour:%X\n", PieceFour);
+
+  int Key = PieceOne ^ PieceTwo ^ PieceThree ^ PieceFour; // xor
+  printf("key: %X", Key);
 
   return EXIT_SUCCESS;
 }
