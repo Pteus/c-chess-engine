@@ -120,7 +120,8 @@ enum {
   F8,
   G8,
   H8,
-  NO_SQ
+  NO_SQ,
+  OFFBOARD
 };
 
 enum { FALSE, TRUE };
@@ -170,6 +171,7 @@ typedef struct {
 // A2 = (21 + 0) * (1 * 10) = 31
 #define FR2SQ(f, r) ((21 + (f)) + ((r) * 10))
 #define SQ64(sq120) Sqr120ToSqr64[sq120]
+#define SQ120(sq64) Sqr64ToSqr120[sq64]
 #define POP(b) PopBit(b)
 #define CNT(b) CountBits(b)
 #define CLRBIT(bb, sq) ((bb) &= ClearMask[(sq)])
@@ -192,5 +194,11 @@ extern void AllInit();
 extern void PrintBitBoard(U64 bb);
 extern int PopBit(U64 *bb);
 extern int CountBits(U64 b);
+
+// hashkeys.c
+extern U64 GeneratePosKey(const S_BOARD *pos);
+
+// board.c
+extern void ResetBoards(S_BOARD *pos);
 
 #endif
