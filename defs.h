@@ -198,6 +198,9 @@ extern int PieceMin[13];
 extern int PieceVal[13];
 extern int PieceCol[13];
 
+extern int FilesBrd[BRD_SRQ_NUM];
+extern int RanksBrd[BRD_SRQ_NUM];
+
 /* FUNCTIONS*/
 // init.c
 extern void AllInit();

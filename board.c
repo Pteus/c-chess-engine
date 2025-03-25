@@ -226,6 +226,7 @@ void UpdateListsMaterial(S_BOARD *pos) {
         pos->minPce[colour]++;
 
       pos->material[colour] += PieceVal[piece];
+
       pos->pList[piece][pos->pceNum[piece]] = sq;
       pos->pceNum[piece]++;
 
